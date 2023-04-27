@@ -25,3 +25,10 @@
     width: 100%;
 }
 
+.correct {
+    background-color: chartreuse;
+}
+
+.incorrect {
+    background-color: deeppink;
+}

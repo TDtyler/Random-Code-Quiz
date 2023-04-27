@@ -46,6 +46,11 @@ startGame = () => {
 }
 
 getNewQuestion = () => {
+
+    if(availableQuestions.length === 0 || questionCounter >Max_Questions) {
+        return window.location.assign("end.html");
+    }
+
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -68,7 +73,15 @@ choices.forEach(choice => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
 
-        getNewQuestion();
+        const classToApply = 
+            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+        
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);
     });
 });
 
