@@ -3,7 +3,7 @@ const saveScoreBtn = document.getElementById("saveScoreBtn");
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-const highScores = JSON.parse(localStorage.setItem("highScores",)) || [];
+const highScores = JSON.parse(localStorage.getItem("highScores",)) || [];
 
 
 finalScore.innerText = mostRecentScore;
